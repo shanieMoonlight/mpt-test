@@ -1,24 +1,2 @@
-add ids to forms
-remove DummySurvey use
 
-JEST
-menu: Add filter to 
-menu: style like figma
-Make Required Randomize Options: must be switches
-
-
-remove AServerIoService
-remove figma
-
-Design action button and regualr button
-
-fix the way that ioservice get the url
-remove : to_dd_MMM_YYYY
-private url: string - use injecttion token??
-_getQueryParams - fix it use real params
-
-remove actions from : 
-        type ACTIONS =
-        | 'get'
-        | 'put'
 
