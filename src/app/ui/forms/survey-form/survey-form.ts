@@ -121,9 +121,22 @@ export class SurveyFormComponent {
     const questions = (survey.questions ?? []).slice()
       .sort((q1, q2) => (q1.questionId ?? Number.POSITIVE_INFINITY) - (q2.questionId ?? Number.POSITIVE_INFINITY));
 
-    for (const question of questions) {
+
+    for (let i = 0; i < questions.length; i++) {
+      const question = questions[i];
+      if (!question.questionId) { //A questionId is required, assign one if missing.  Just in case
+        console.warn('SurveyFormComponent: question without questionId found in survey:', survey);
+        console.warn('SurveyFormComponent: assigningId:', i + 1);
+        question.questionId = i + 1; //Assign a questionId if missing
+      }
       this.questions.push(new FormControl<Question>(question, Validators.required));
     }
+    // for (const question of questions) {
+    //   if (!question.questionId) {
+    //     console.warn('SurveyFormComponent: question without questionId found in survey:', survey);
+    //   }
+    //   this.questions.push(new FormControl<Question>(question, Validators.required));
+    // }
     this._form.updateValueAndValidity();
   }
 

@@ -51,7 +51,7 @@ describe('SurveyFormComponent', () => {
     expect(questions.length).toBe(3);
 
     const ids = questions.controls.map((c: FormControl) => (c.value as Question).questionId);
-    expect(ids).toEqual([1, 2, undefined]);
+    expect(ids).toEqual([1, 2, 3]);
   });
 
   it('addQuestion increases questions length and deleteQuestion removes', () => {
@@ -78,7 +78,7 @@ describe('SurveyFormComponent', () => {
       title: 'Sort Test',
       description: 'Sort description',
       questions: [
-        { questionId: 5, questionText: 'Q5' } as any,
+        { questionId: 2, questionText: 'Q2' } as any,
         { questionId: 1, questionText: 'Q1' } as any,
         { questionId: undefined, questionText: 'Q?' } as any,
         { questionId: 3, questionText: 'Q3' } as any,
@@ -93,8 +93,10 @@ describe('SurveyFormComponent', () => {
     const questions = form.controls.questions as FormArray;
     expect(questions.length).toBe(4);
 
+    console.log(questions)
+
     const ids = questions.controls.map((c: FormControl) => (c.value as Question).questionId);
-    expect(ids).toEqual([1, 3, 5, undefined]);
+    expect(ids).toEqual([1, 2, 3, 4]);
   });
 
 

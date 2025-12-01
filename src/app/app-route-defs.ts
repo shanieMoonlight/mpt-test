@@ -1,6 +1,12 @@
 
 //#################################################//
 
+//File for keeping application route definitions centralized 
+// Only using  static route = (route: ROUTE) => route; becuase no other sections in this app yet
+// Full documentation available : https://spider-baby-hub.web.app/blog/route-defs-tutorial
+
+//#################################################//
+
 function wrapWithLeadingSlash<T>(fullPathsObj: T): T {
 
     if (typeof fullPathsObj === 'function') {
@@ -26,7 +32,7 @@ function wrapWithLeadingSlash<T>(fullPathsObj: T): T {
 /** Base route for the main application area. */
 const BaseRoute = '';
 
-/** Type alias for the child routes of the main application area: 'home' | 'open-source'. */
+/** Type alias for the child routes of the main application area: 'home' | 'survey-builder'| etc. */
 type ROUTE = 'home'
     | 'survey-builder'
     | 'survey-list'
@@ -75,8 +81,8 @@ export class MptAppRouteDefs {
     //  */
     // static fullPaths = {
     //     /** Full paths for the 'main' application area. */
-    //     main: HubMainAreaRoutesDefs.fullPathFn(this.BASE),
-    //     blog: HubBlogSectionRoutesDefs.fullPathFn(this.BASE),
+    //     surveys: SurveySectionRoutesDefs.fullPathFn(this.BASE),
+    //     other sections: '...'
     // };
 
 
