@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input, output, signal } from '@angular/core';
 import { MptUiIconButton } from '../../buttons/icon-button/icon-button';
 import { MptUiTextButton } from '../../buttons/text-button/text-button.component';
 import { MptUiDivider } from '../../divider/divider';
@@ -25,12 +25,13 @@ export class SuccessModal {
     this._successMsg.set(message ?? undefined);
   }
 
-  _title = signal<string>('Success');
+  title = input<string>('Success');
 
-  _dismissSuccess = output({ alias: 'dismiss' });
-  _refresh = output({ alias: 'refresh' });
+  dismissed = output();
 
-  protected dismissSuccess = () =>
-    this._successMsg.set(undefined)
+  protected dismissSuccess() {
+    this._successMsg.set(undefined);
+    this.dismissed.emit();
+  }
 
 }

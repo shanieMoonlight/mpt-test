@@ -25,12 +25,12 @@ export class ErrorModal {
     this._errorMsg.set(message ?? undefined);
   }
 
-  _dismissError = output({ alias: 'dismiss' })
-
+  dismissed = output()
 
 
   protected dismissError(): void {
     this._errorMsg.set(undefined)
+    this.dismissed.emit();
     console.log('dismissError', this._errorMsg())
   }
 
