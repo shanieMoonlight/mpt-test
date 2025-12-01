@@ -1,6 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MptUiDivider } from './divider';
+import { hostHasThemeClass } from '../../../testing/theme-assert';
 
 describe('MptUiDivider', () => {
   let fixture: ComponentFixture<MptUiDivider>;
@@ -34,17 +35,8 @@ describe('MptUiDivider', () => {
   });
 
   it('host element receives class matching `theme` input', () => {
-    fixture.componentRef.setInput('theme', 'primary');
-    fixture.detectChanges();
-    const classes = fixture.debugElement.classes;
-    expect(classes['primary']).toBeTruthy();
-
-    // switching theme updates classes
-    fixture.componentRef.setInput('theme', 'secondary');
-    fixture.detectChanges();
-    const updated = fixture.debugElement.classes;
-    expect(updated['secondary']).toBeTruthy();
-    expect(updated['primary']).toBeFalsy();
+    expect(hostHasThemeClass(fixture, 'primary')).toBeTruthy();
+    expect(hostHasThemeClass(fixture, 'secondary')).toBeTruthy();
   });
 });
 

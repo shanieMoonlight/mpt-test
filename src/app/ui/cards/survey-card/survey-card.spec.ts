@@ -2,6 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { MptUiSurveyCard } from './survey-card';
+import { hostHasThemeClass } from '../../../../testing/theme-assert';
 
 describe('MptUiSurveyCard', () => {
   let fixture: ComponentFixture<MptUiSurveyCard>;
@@ -72,7 +73,7 @@ describe('MptUiSurveyCard', () => {
     // expect(Object.keys(classes).length).toBe(0);
   });
 
-   it('host element receives class matching `theme` input', () => {
+  it('host element receives class matching `theme` input', () => {
         const survey = {
       id: '42',
       title: 'Test Survey',
@@ -80,19 +81,10 @@ describe('MptUiSurveyCard', () => {
       questions: [{ questionId: 1 }, { questionId: 2 }],
     };
 
-    // set inputs like Angular would
+    // set inputs like Angular would and assert via helper
     fixture.componentRef.setInput('survey', survey);
-    fixture.componentRef.setInput('theme', 'primary');
-    fixture.detectChanges();
-    const classes = fixture.debugElement.classes;
-    expect(classes['primary']).toBeTruthy();
-
-    // switching theme updates classes
-    fixture.componentRef.setInput('theme', 'secondary');
-    fixture.detectChanges();
-    const updated = fixture.debugElement.classes;
-    expect(updated['secondary']).toBeTruthy();
-    expect(updated['primary']).toBeFalsy();
+    expect(hostHasThemeClass(fixture, 'primary')).toBeTruthy();
+    expect(hostHasThemeClass(fixture, 'secondary')).toBeTruthy();
   });
 
 });

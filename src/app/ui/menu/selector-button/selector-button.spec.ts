@@ -2,6 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MptMenuSelectorButton } from './selector-button';
 import { By } from '@angular/platform-browser';
+import { hostHasThemeClass } from '../../../../testing/theme-assert';
 
 describe('MptMenuSelectorButton', () => {
   let fixture: ComponentFixture<MptMenuSelectorButton>;
@@ -54,12 +55,9 @@ describe('MptMenuSelectorButton', () => {
   });
 
   it('host element receives class matching `theme` input', () => {
-    // default is 'primary' but set explicitly to ensure binding works
-    fixture.componentRef.setInput('theme', 'primary');
-    fixture.detectChanges();
-
-    // host element classes are available on the fixture debugElement
-    const classes = fixture.debugElement.classes;
-    expect(classes['primary']).toBeTruthy();
+    // use shared helper to assert host theme class
+    expect(hostHasThemeClass(fixture, 'primary')).toBeTruthy();
+    // switch theme and assert again
+    expect(hostHasThemeClass(fixture, 'secondary')).toBeTruthy();
   });
 });
