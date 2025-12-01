@@ -7,7 +7,7 @@
 
         <div class="form-row title" >
             <label class="label" for="title">Title</label>
-            <input id="title" type="text" formControlName="title" class="control input" placeholder="Enter the survey title" />
+            <input id="title"  type="text" formControlName="title" class="control input" placeholder="Enter the survey title" />
             <sb-first-error [control]="_form.controls.title" />
         </div>
         
@@ -29,6 +29,7 @@
             @for (answerControl of _form.controls.questions.controls; track $index;let idx = $index) {
             <div class="form-row inline">
                 <mpt-choice-question-cva 
+                    [attr.data-testid]="'option-row-' + idx"
                     [questionNumber]="idx + 1" 
                     [formControlName]="idx" 
                     class="input"/>
@@ -42,6 +43,7 @@
               <!-- {{this._form.controls.questions.invalid}}={{this._form.controls.questions.length}}-{{this._form.controls.questions.length > 0 && this._form.controls.questions.invalid}} -->
                <!-- Disable when there is a question that's not completely filled out (invalid) -->
              <mpt-ui-text-button 
+                id="btn-add-question"
                 type="button" 
                 [disabled]="this._form.controls.questions.length > 0 && this._form.controls.questions.invalid"
                 (click)="addQuestion()">                
@@ -53,9 +55,9 @@
     
     <div class="form-actions">
         @if(_isEditMode()){
-            <mpt-ui-button type="button" [disabled]="_form.invalid" (click)="update()">Update</mpt-ui-button>
+            <mpt-ui-button id="btn-edit" type="button" [disabled]="_form.invalid" (click)="update()">Update</mpt-ui-button>
         }@else{
-            <mpt-ui-button type="button" [disabled]="_form.invalid" (click)="submitForm()">Save</mpt-ui-button>
+            <mpt-ui-button id="btn-submit" type="button" [disabled]="_form.invalid" (click)="submitForm()">Save</mpt-ui-button>
         }
     </div>
 </form>

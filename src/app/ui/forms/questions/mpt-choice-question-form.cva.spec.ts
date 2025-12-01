@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { FormControl, FormArray } from '@angular/forms';
 import { MptChoiceQuestionFormCva } from './mpt-choice-question-form.cva';
 import { QuestionType } from '../../../data/models/question-type';
+import { byTestIdAll, byTestId } from '../../../../testing/test-id-helpers';
 
 describe('MptChoiceQuestionFormCva', () => {
   let fixture: ComponentFixture<MptChoiceQuestionFormCva>;
@@ -83,7 +84,7 @@ describe('MptChoiceQuestionFormCva', () => {
 
     expect((form.controls.options as FormArray).length).toBe(3);
 
-    const deletes = fixture.debugElement.queryAll(By.css('[data-testid^="btn-delete-option-"]'));
+    const deletes = byTestIdAll(fixture, 'btn-delete-option-');
     expect(deletes.length).toBe(3);
 
     // click the middle delete button (index 1)
@@ -125,7 +126,7 @@ describe('MptChoiceQuestionFormCva', () => {
     (form.controls.options as FormArray).push(new FormControl('B'));
     fixture.detectChanges();
 
-    const rows = fixture.debugElement.queryAll(By.css('[data-testid^="option-row-"]'));
+    const rows = byTestIdAll(fixture, 'option-row-');
     expect(rows.length).toBe(2);
 
     rows.forEach(row => {

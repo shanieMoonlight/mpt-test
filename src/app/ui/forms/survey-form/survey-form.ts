@@ -110,7 +110,7 @@ export class SurveyFormComponent {
 
   //- - - - - - - - - - - - -//
 
-  setFormValues(survey: SurveyDto) {
+  protected setFormValues(survey: SurveyDto) {
 
     this._form.patchValue({
       title: survey?.title ?? '',
