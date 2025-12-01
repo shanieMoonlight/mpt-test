@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MptUiRouteCard } from '../../ui/cards/route-card/route-card';
 import { MptAppRouteDefs } from '../../app-route-defs';
+import { MptSwitchComponent } from '../../ui/switch/switch.component';
 
 //######################################//
 
@@ -21,13 +22,16 @@ const ROUTE_CARDS: RouteCardConfig[] = [
     route: `/${MptAppRouteDefs.route('survey-builder')}`,
     icon: 'build'
   }
-];    
+];
 
 //######################################//
 
 @Component({
   selector: 'mpt-home',
-  imports: [MptUiRouteCard],
+  imports: [
+    MptUiRouteCard,
+    MptSwitchComponent
+  ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

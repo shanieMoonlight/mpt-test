@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { ChangeDetectionStrategy, Component, input, output, signal, forwardRef, effect } from '@angular/core';
 import { EmpathyTheme } from '../theme';
 import { QuestionTypeMenuItem } from './menu-item';
@@ -47,7 +48,6 @@ export class MptQuestionTypeMenu implements ControlValueAccessor {
   theme = input<EmpathyTheme>('primary');
   selectedItem = output<QuestionTypeMenuItem>();
 
-  // ControlValueAccessor callbacks
   protected _disabled = signal(false);
 
   protected _selectedItem = signal<QuestionTypeMenuItem | undefined>(undefined);
@@ -79,6 +79,7 @@ export class MptQuestionTypeMenu implements ControlValueAccessor {
   writeValue(value: number | undefined): void {
     
     if (!value) {
+      
       this._selectedItem.set(undefined);
     } else {
       const item = this.items().find(i => i.type === value);

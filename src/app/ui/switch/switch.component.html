@@ -1,0 +1,11 @@
+<label class="mpt-switch" [class.disabled]="_disabled()">
+  <input
+    type="checkbox"
+    class="mpt-switch-input"
+    [checked]="checked()"
+    [disabled]="_disabled()"
+    (change)="onToggle($event)"
+    role="switch"
+    [attr.aria-checked]="checked()"/>
+  <span class="mpt-switch-slider" aria-hidden="true"></span>
+</label>

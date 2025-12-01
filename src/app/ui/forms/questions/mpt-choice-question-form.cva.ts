@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, ControlValueAccessor, FormArray, FormBuilder, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, Validators } from '@angular/forms';
@@ -8,6 +9,7 @@ import { MptUiIconButton } from '../../buttons/icon-button/icon-button';
 import { MptUiTextButton } from '../../buttons/text-button/text-button.component';
 import { MptQuestionTypeMenu } from '../../menu/menu';
 import { QuestionTypeMenuItem } from '../../menu/menu-item';
+import { MptSwitchComponent } from '../../switch/switch.component';
 
 //##########################//
 
@@ -41,7 +43,8 @@ const CHOICE_QUESTION_MENU_ITEMS: QuestionTypeMenuItem[] = [
     FirstErrorComponent,
     MptQuestionTypeMenu,
     MptUiIconButton,
-    MptUiTextButton
+    MptUiTextButton,
+    MptSwitchComponent
   ],
   templateUrl: './mpt-choice-question-form.html',
   styleUrl: './mpt-choice-question-form.scss',

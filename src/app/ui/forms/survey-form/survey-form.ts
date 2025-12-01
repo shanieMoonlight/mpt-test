@@ -8,6 +8,7 @@ import { MptUiIconButton } from '../../buttons/icon-button/icon-button';
 import { MptUiTextButton } from '../../buttons/text-button/text-button.component';
 import { MptUiIcon } from '../../icon/icon';
 import { MptChoiceQuestionFormCva } from '../questions/mpt-choice-question-form.cva';
+import { MptSwitchComponent } from '../../switch/switch.component';
 
 //##########################//
 
@@ -116,7 +117,9 @@ export class SurveyFormComponent {
       description: survey?.description ?? ''
     });
 
-    const questions = survey.questions ?? [];
+    //Questions id's sorted ascending. Undefined id's go to the end (Just in case...).
+    const questions = (survey.questions ?? []).slice()
+      .sort((q1, q2) => (q1.questionId ?? Number.POSITIVE_INFINITY) - (q2.questionId ?? Number.POSITIVE_INFINITY));
 
     for (const question of questions) {
       this.questions.push(new FormControl<Question>(question, Validators.required));
@@ -137,7 +140,7 @@ export class SurveyFormComponent {
     this.newSurvey.emit(survey);
   }
 
-  
+
 
   update() {
     if (!this._form.valid)

@@ -1,0 +1,54 @@
+.mpt-switch {
+    display: inline-block;
+    position: relative;
+    width: 2.5rem;
+    height: 1.25rem;
+    vertical-align: middle;
+
+    .mpt-switch-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .mpt-switch-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #adb5bd;
+        background: var(--mat-sys-outline);
+        border-radius: 1.25rem;
+        transition: background 0.15s ease-in-out;
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: 0.9rem;
+            width: 0.9rem;
+            left: 0.15rem;
+            top: 0.15rem;
+            background: #fff;
+            background: var(--mat-sys-surface);
+            border-radius: 50%;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease-in-out;
+        }
+    }
+
+    .mpt-switch-input:checked+.mpt-switch-slider {
+        background-color: var(--mat-sys-primary);
+    }
+
+    .mpt-switch-input:checked+.mpt-switch-slider::before {
+        transform: translateX(1.25rem);
+    }
+
+    &.disabled {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}

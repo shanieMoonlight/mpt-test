@@ -6,14 +6,14 @@
         
 
         <div class="form-row title" >
-            <label class="label">Title</label>
-            <input type="text" formControlName="title" class="control input" placeholder="Enter the survey title" />
+            <label class="label" for="title">Title</label>
+            <input id="title" type="text" formControlName="title" class="control input" placeholder="Enter the survey title" />
             <sb-first-error [control]="_form.controls.title" />
         </div>
         
         <div class="form-row">
-            <label class="label">Description</label>
-            <input type="text" formControlName="description" class="control input" placeholder="Enter the survey description" />
+            <label class="label" for="description">Description</label>
+            <input id="description" type="text" formControlName="description" class="control input" placeholder="Enter the survey description" />
             <sb-first-error [control]="_form.controls.description" />
         </div>
         

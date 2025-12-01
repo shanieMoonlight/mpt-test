@@ -8,8 +8,8 @@
         </div>
 
         <div class="form-row">
-            <label class="label">Question</label>
-            <input type="text" formControlName="questionText" class="control input" placeholder="Enter the question text" />
+            <label class="label" for="questionText">Question</label>
+            <input id="questionText" type="text" formControlName="questionText" class="control input" placeholder="Enter the question text" />
             <sb-first-error [control]="_form.controls.questionText" />
         </div>
         
@@ -30,14 +30,16 @@
             <div class="checkboxes">
 
                 <div class="form-row inline">
-                    <label class="label">Make Required</label>
-                    <input type="checkbox" formControlName="mandatoryInd" class="control checkbox" />
+                    <label class="label" for="mandatoryInd">Make Required</label>
+                    <!-- <input id="mandatoryInd" type="checkbox" formControlName="mandatoryInd" class="control checkbox" /> -->
+                    <mpt-ui-switch id="mandatoryInd" type="checkbox" formControlName="mandatoryInd" class="checkbox" />
                     <sb-first-error [control]="_form.controls.mandatoryInd" />
                 </div>
 
                 <div class="form-row inline">
-                    <label class="label">Randomize Options</label>
-                    <input type="checkbox" formControlName="randomizeOptions" class="control checkbox" />
+                    <label class="label" for="randomizeOptions">Randomize Options</label>
+                    <!-- <input id="randomizeOptions" type="checkbox" formControlName="randomizeOptions" class="control checkbox" /> -->
+                    <mpt-ui-switch id="randomizeOptions" type="checkbox" formControlName="randomizeOptions" class="checkbox" />
                     <sb-first-error [control]="_form.controls.randomizeOptions" />
                 </div>
             </div>
