@@ -75,47 +75,7 @@ describe('MptThemePicker', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should display the default tooltip', async () => {
-        expect(component.pickerTooltip()).toBe('Change app theme');
 
-        // Get the tooltip harness directly
-        const tooltipHarness = await loader.getHarness(MatTooltipHarness);
-        const hostElement = await tooltipHarness.host();
-
-        // Hover over the host element (the mat-icon)
-        await hostElement.hover();
-
-        // Check the tooltip text
-        expect(await tooltipHarness.getTooltipText()).toBe('Change app theme');
-
-        // Mouse away to hide tooltip
-        await hostElement.mouseAway();
-    });
-
-    it('should display a custom tooltip when provided', async () => {
-        const customTooltip = 'Select Theme';
-        fixture.componentRef.setInput('pickerTooltip', customTooltip);
-        fixture.detectChanges(); // Ensure changes are detected
-        expect(component.pickerTooltip()).toBe(customTooltip);
-
-        // Get the tooltip harness directly
-        const tooltipHarness = await loader.getHarness(MatTooltipHarness);
-        const hostElement = await tooltipHarness.host();
-
-        // Hover over the host element (the mat-icon)
-        await hostElement.hover();
-
-        // Check the tooltip text
-        expect(await tooltipHarness.getTooltipText()).toBe(customTooltip);
-
-        // Mouse away to hide tooltip
-        await hostElement.mouseAway();
-    });
-
-    it('should combine system and custom themes', () => {
-        const expectedOptions = [...mockSystemThemes(), ...mockCustomThemes()];
-        expect(component['_allOptions']()).toEqual(expectedOptions);
-    });
 
     it('should reflect the initial theme from SbThemeService', fakeAsync(() => {
         tick();

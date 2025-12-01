@@ -12,7 +12,12 @@ export default {
       },
     ],
   },
-  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
+  // Allow transforming ESM `.mjs` files and specific ESM packages inside node_modules.
+  // This lets Jest transform Angular's fesm2022 `.mjs` files and other modern ESM packages.
+  // Temporarily allow transforming node_modules so ESM `.mjs` and related packages
+  // are properly transformed by `jest-preset-angular`. This can be narrowed later
+  // if performance becomes an issue.
+  transformIgnorePatterns: [],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
