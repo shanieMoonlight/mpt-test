@@ -1,5 +1,52 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MptUiDivider } from './divider';
+
+describe('MptUiDivider', () => {
+  let fixture: ComponentFixture<MptUiDivider>;
+  let component: MptUiDivider;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [MptUiDivider],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(MptUiDivider);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('does not have theme class by default', () => {
+    // default theme is undefined
+    const classes = fixture.debugElement.classes;
+    // ensure a common theme class is not 
+    fixture.componentRef.setInput('theme', undefined);
+    expect(classes['primary']).toBeFalsy();
+    expect(classes['secondary']).toBeFalsy();
+    expect(classes['tertiary']).toBeFalsy();
+    expect(classes['error']).toBeFalsy();
+    // expect(Object.keys(classes).length).toBe(0);
+  });
+
+  it('host element receives class matching `theme` input', () => {
+    fixture.componentRef.setInput('theme', 'primary');
+    fixture.detectChanges();
+    const classes = fixture.debugElement.classes;
+    expect(classes['primary']).toBeTruthy();
+
+    // switching theme updates classes
+    fixture.componentRef.setInput('theme', 'secondary');
+    fixture.detectChanges();
+    const updated = fixture.debugElement.classes;
+    expect(updated['secondary']).toBeTruthy();
+    expect(updated['primary']).toBeFalsy();
+  });
+});
 
 describe('Divider', () => {
   let component: MptUiDivider;
