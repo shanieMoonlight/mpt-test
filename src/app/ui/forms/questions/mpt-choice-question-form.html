@@ -3,7 +3,7 @@
     <div class="block" tabindex="0" >
         <div class="form-row inline">
             <div class="q">Q{{_form.controls.questionId.value}}</div>
-            <mpt-question-type-menu formControlName="questionType" [items]="_questionTypeMenuItems" />
+            <mpt-question-type-menu id="questionType" formControlName="questionType" [items]="_questionTypeMenuItems" />
             <sb-first-error [control]="_form.controls.questionType" />
         </div>
 
@@ -17,16 +17,16 @@
         <ng-container formArrayName="options">
             <!-- Don't use getter -->
             @for (answerControl of _form.controls.options.controls; track $index;let idx = $index) {
-            <div class="form-row inline">
-                <span>- </span><input class="control input option" [formControlName]="idx" placeholder="Question {{ idx + 1 }}" />
-                <mpt-ui-icon-button (click)="deleteAnswerOption(idx)" [iconName]="'close'" />
+            <div class="form-row inline option-row" [attr.data-testid]="'option-row-' + idx">
+                <span>- </span><input class="control input option" [formControlName]="idx" placeholder="Question {{ idx + 1 }}" [attr.data-testid]="'option-input-' + idx" />
+                <mpt-ui-icon-button [id]="'btn-delete-option' + idx" (click)="deleteAnswerOption(idx)" [iconName]="'close'" [attr.data-testid]="'btn-delete-option-' + idx" />
             </div>
             }
         </ng-container>
 
 
         <div class="footer">
-            <mpt-ui-text-button (click)="addAnswerOption()">Add Option</mpt-ui-text-button>
+            <mpt-ui-text-button id="btn-add-option" (click)="addAnswerOption()">Add Option</mpt-ui-text-button>
             <div class="checkboxes">
 
                 <div class="form-row inline">
