@@ -20,7 +20,6 @@ import { EmpathyTheme } from '../theme';
 export class MptUiIcon {
 
   theme = input<EmpathyTheme | undefined>(undefined);
-  iconName = input<string>();
   iconSizePx = input<number>(24);
 
 }

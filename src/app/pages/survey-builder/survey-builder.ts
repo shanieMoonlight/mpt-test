@@ -8,7 +8,7 @@ import { SurveyFormComponent } from '../../ui/forms/survey-form/survey-form';
 import { NotificationsModal } from '../../ui/notifications/notifications/notifications.component';
 
 @Component({
-  selector: 'survey-builder',
+  selector: 'mpt-survey-builder',
   imports: [
     NotificationsModal,
     SurveyFormComponent
