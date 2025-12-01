@@ -6,6 +6,8 @@ import { SurveyDto } from '../../data/models/survey-dto';
 import { SurveyStorage } from '../../services/survey-storage/survey-storage';
 import { SurveyFormComponent } from '../../ui/forms/survey-form/survey-form';
 import { NotificationsModal } from '../../ui/notifications/notifications/notifications.component';
+import { Router } from '@angular/router';
+import { MptAppRouteDefs } from '../../app-route-defs';
 
 @Component({
   selector: 'mpt-survey-builder',
@@ -23,6 +25,7 @@ export class MptSurveyBuilder {
   private _surveyIoService = inject(SurveyIoService);
   private _storage = inject(SurveyStorage);
   private _toaster = inject(SbToastService);
+  private _router = inject(Router);
 
   //----------------//
 
@@ -45,6 +48,8 @@ export class MptSurveyBuilder {
     .setOnSuccessFn(() => {
       //On success, clear any saved draft
       this._storage.removeSurveyDraft();
+      // Optionally, navigate to survey list
+      // this._router.navigateByUrl(`/${MptAppRouteDefs.route('survey-list')}`)
     })
 
 
