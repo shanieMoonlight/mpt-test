@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MptUiRouteCard } from '../../ui/cards/route-card/route-card';
 import { MptAppRouteDefs } from '../../app-route-defs';
-import { MptSwitchComponent } from '../../ui/switch/switch.component';
+import { MptUiRouteCard } from '../../ui/cards/route-card/route-card';
 
 //######################################//
 
@@ -29,8 +28,7 @@ const ROUTE_CARDS: RouteCardConfig[] = [
 @Component({
   selector: 'mpt-home',
   imports: [
-    MptUiRouteCard,
-    MptSwitchComponent
+    MptUiRouteCard
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',

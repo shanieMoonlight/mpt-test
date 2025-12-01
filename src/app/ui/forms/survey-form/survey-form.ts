@@ -8,7 +8,6 @@ import { MptUiIconButton } from '../../buttons/icon-button/icon-button';
 import { MptUiTextButton } from '../../buttons/text-button/text-button.component';
 import { MptUiIcon } from '../../icon/icon';
 import { MptChoiceQuestionFormCva } from '../questions/mpt-choice-question-form.cva';
-import { MptSwitchComponent } from '../../switch/switch.component';
 
 //##########################//
 
@@ -78,15 +77,18 @@ export class SurveyFormComponent {
   //- - - - - - - - - - - - -//
 
   constructor() {
-    //Emit a draft everytime the questions control changes and is valid
-    //Add a question : questions control becomes invalid (required) -> no draft emitted
-    //Fill question : questions control becomes valid -> draft emitted
+    // Emit a draft everytime the questions control changes and is valid
+    // Add a question : questions control becomes invalid (required) -> no draft emitted
+    // Fill question : questions control becomes valid -> draft emitted
     this._form.controls.questions.statusChanges
       .pipe(takeUntilDestroyed())
       .subscribe((val) => {
         if (val === 'VALID') {
-          // console.log('questions IF:', val);
+          //Ensure form is up to date (Has latest question values)
+          //There seems to be a delay when deleting a question
+          this._form.updateValueAndValidity(); 
           const survey: SurveyDto = this.toSurveyDto();
+          console.log('survey draft emitted:', survey);
           this.surveyDraft.emit(survey)
         }
       })
@@ -131,12 +133,6 @@ export class SurveyFormComponent {
       }
       this.questions.push(new FormControl<Question>(question, Validators.required));
     }
-    // for (const question of questions) {
-    //   if (!question.questionId) {
-    //     console.warn('SurveyFormComponent: question without questionId found in survey:', survey);
-    //   }
-    //   this.questions.push(new FormControl<Question>(question, Validators.required));
-    // }
     this._form.updateValueAndValidity();
   }
 
@@ -144,7 +140,7 @@ export class SurveyFormComponent {
   //- - - - - - - - - - - - -//
 
 
-  submitForm() {
+  protected submitForm() {
     if (!this._form.valid)
       return;
 
@@ -154,8 +150,7 @@ export class SurveyFormComponent {
   }
 
 
-
-  update() {
+  protected update() {
     if (!this._form.valid)
       return;
 
@@ -163,6 +158,7 @@ export class SurveyFormComponent {
     console.log(survey);
     this.updateSurvey.emit(survey);
   }
+
 
   private toSurveyDto(): SurveyDto {
     const survey: SurveyDto = {

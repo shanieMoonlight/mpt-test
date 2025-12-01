@@ -13,7 +13,7 @@ This repository contains a small Angular application for creating, storing, list
 **Project Structure (high level)**
 - **Pages**
   - `src/app/pages/home/*` — Home dashboard with navigation cards to the main flows.
-  - `src/app/pages/survey-builder/*` — Page to create surveys. Loads a draft from `SurveyStorage` if present, displays `SurveyFormComponent` to trigger create operations.
+  - `src/app/pages/survey-builder/*` — Page to create surveys. Loads a draft from `SurveyStorage` if present, displays `SurveyFormComponent` to trigger create operations. (Could be changed to save to a Drafts endpoint if one existed)
   - `src/app/pages/survey-list/*` — Calls the API to fetch all surveys and displays them via `MptUiSurveyCard`.
   - `src/app/pages/survey-detail/*` — Reads the survey id from `ActivatedRoute`, fetches the survey with that id and displays it in `SurveyFormComponent` for editing.  Uses `MiniStateBuilder` for upate and get states, then combines the loaders and messages with `MiniStateCombined`.
 

@@ -10,6 +10,7 @@ import { MptUiTextButton } from '../../buttons/text-button/text-button.component
 import { MptQuestionTypeMenu } from '../../menu/menu';
 import { QuestionTypeMenuItem } from '../../menu/menu-item';
 import { MptSwitchComponent } from '../../switch/switch.component';
+import { MptUiIcon } from "../../icon/icon";
 
 //##########################//
 
@@ -44,7 +45,8 @@ const CHOICE_QUESTION_MENU_ITEMS: QuestionTypeMenuItem[] = [
     MptQuestionTypeMenu,
     MptUiIconButton,
     MptUiTextButton,
-    MptSwitchComponent
+    MptSwitchComponent,
+    MptUiIcon
   ],
   templateUrl: './mpt-choice-question-form.html',
   styleUrl: './mpt-choice-question-form.scss',

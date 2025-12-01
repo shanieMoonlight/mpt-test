@@ -105,7 +105,7 @@ describe('SurveyFormComponent', () => {
     const spy = jest.spyOn((component as any).updateSurvey, 'emit');
 
     // initial state: form is invalid (title/description required, questions empty)
-    component.update();
+    (component as any).update();
     expect(spy).not.toHaveBeenCalled();
 
     // make form valid: set title/description and add a valid question
@@ -114,7 +114,7 @@ describe('SurveyFormComponent', () => {
     form.controls.description.setValue('Valid Desc');
     // (component as .addQuestion();
     fixture.detectChanges();
-    component.update();
+    (component as any).update();
     expect(spy).toHaveBeenCalledTimes(0);
 
     // set the question value so the FormControl becomes valid
@@ -124,7 +124,7 @@ describe('SurveyFormComponent', () => {
     fixture.detectChanges();
     console.log(form.value, form.valid);
 
-    component.update();
+    (component as any).update();
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -133,7 +133,7 @@ describe('SurveyFormComponent', () => {
     const spy = jest.spyOn((component as any).newSurvey, 'emit');
 
     // initial state: form is invalid (title/description required, questions empty)
-    component.submitForm();
+    (component as any).submitForm();
     expect(spy).not.toHaveBeenCalled();
 
     // make form valid: set title/description and add a valid question
@@ -142,7 +142,7 @@ describe('SurveyFormComponent', () => {
     form.controls.description.setValue('Valid Desc');
     // (component as .addQuestion();
     fixture.detectChanges();
-    component.submitForm();
+    (component as any).submitForm();
     expect(spy).toHaveBeenCalledTimes(0);
 
     // set the question value so the FormControl becomes valid
@@ -152,7 +152,7 @@ describe('SurveyFormComponent', () => {
     fixture.detectChanges();
     console.log(form.value);
 
-    component.submitForm();
+    (component as any).submitForm();
     expect(spy).toHaveBeenCalledTimes(1);
   });
 

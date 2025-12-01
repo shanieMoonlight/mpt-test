@@ -11,7 +11,7 @@
   height: 24px;
   border-radius: var(--border-radius);
   background: var(--mat-sys-primary);
-  color: var(--mat-sys-primary-100);
+  color: var(--mat-sys-on-primary);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -19,6 +19,12 @@
   font-weight: 600;
   margin-right: 8px;
   padding: 4px 8px;
+}
+
+
+.block:focus,
+.block:focus-within {
+  border-color: rgba(var(--mat-sys-primary-rgb), 0.5);
 }
 
 

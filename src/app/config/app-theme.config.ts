@@ -16,11 +16,19 @@ export const IS_HALLOWEEN = today >= halloweenTimeStart && today < halloweenTime
 const _themeOptions: ThemeOption[] = [
   ThemeOption.create({
     darkMode: 'light',
-    label: 'Empathy Blue',
-    value: 'empathy-blue',
+    label: 'Empathy Test Blue',
+    value: 'empathy-test-blue',
     primaryColor: '#3B82F6',
     secondaryColor: '#FFB5C2',
     tertiaryColor: '#B4EBCA', //(optional)
+  }),
+  ThemeOption.create({
+    darkMode: 'light',
+    label: 'Empathy Green',
+    value: 'empathy-greem',
+    primaryColor: '#ACD434',
+    secondaryColor: '#5B618A',
+    tertiaryColor: '#5B507A', //(optional)
   }),
   ThemeOption.create({
     darkMode: 'dark',
