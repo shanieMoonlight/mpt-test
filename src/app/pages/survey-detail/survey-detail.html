@@ -1,0 +1,23 @@
+
+<h1>Update Survey</h1>
+
+@if(_survey()){
+  <mpt-survey-form 
+    [surveyToEdit]="_survey()"
+    (updateSurvey)="updateSurvey($event)"
+    />
+}@else{
+  @if(!_loading() && !_errorMsg()){
+    <h1>No Soup for you !!!!</h1>
+  }
+}
+
+
+
+
+
+
+<mpt-notifications-modal
+  [isLoading]="_loading()"
+  [errorMsg]="_errorMsg()"
+  [successMsg]="_successMsg()"/>

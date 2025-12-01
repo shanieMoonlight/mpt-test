@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+  
+  // max-width: 720px;
+}
+
+
+// .form-row.title {
+//   font-weight: 600; font-size: 18px;
+// }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .checkboxes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .form-row{
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+
+}

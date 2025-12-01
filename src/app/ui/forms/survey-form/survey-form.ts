@@ -1,0 +1,160 @@
+import { ChangeDetectionStrategy, Component, computed, inject, Input, output, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FirstErrorComponent, FirstErrorDirective } from '@spider-baby/utils-forms';
+import { Question, SurveyDto } from '../../../data/models';
+import { MptUiButtonComponent } from '../../buttons/button/button.component';
+import { MptUiIconButton } from '../../buttons/icon-button/icon-button';
+import { MptUiTextButton } from '../../buttons/text-button/text-button.component';
+import { MptUiIcon } from '../../icon/icon';
+import { MptChoiceQuestionFormCva } from '../questions/mpt-choice-question-form.cva';
+
+//##########################//
+
+interface SurveyForm {
+  id: FormControl<string | null>;
+  title: FormControl<string>;
+  description: FormControl<string>;
+  questions: FormArray<FormControl<Question>>;
+}
+
+//##########################//
+@Component({
+  selector: 'mpt-survey-form',
+  imports: [
+    ReactiveFormsModule,
+    FirstErrorDirective,
+    FirstErrorComponent,
+    MptUiButtonComponent,
+    MptUiIconButton,
+    MptUiTextButton,
+    MptChoiceQuestionFormCva,
+    MptUiIcon
+  ],
+  templateUrl: './survey-form.html',
+  styleUrl: './survey-form.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    ngSkipHydration: 'true'
+  },
+})
+export class SurveyFormComponent {
+
+  private _fb = inject(FormBuilder);
+
+  //- - - - - - - - - - - - -//
+
+
+  protected _surveyToEdit = signal<SurveyDto | undefined>(undefined);
+  @Input()
+  set surveyToEdit(survey: SurveyDto | null | undefined) {
+    this._surveyToEdit.set(survey ?? undefined);
+    if (!survey)
+      return;
+    this.setFormValues(survey);
+  }
+
+
+  newSurvey = output<SurveyDto>();
+  updateSurvey = output<SurveyDto>();
+  surveyDraft = output<SurveyDto>();
+
+
+  //- - - - - - - - - - - - -//
+
+
+
+  protected _form = this._fb.group<SurveyForm>({
+    id: this._fb.nonNullable.control<string>('', []),
+    title: this._fb.nonNullable.control<string>('', [Validators.required]),
+    description: this._fb.nonNullable.control<string>('', [Validators.required]),
+    questions: new FormArray<FormControl<Question>>([], [Validators.required]),
+  });
+
+
+  protected _isEditMode = computed(() => !!this._surveyToEdit());
+
+  //- - - - - - - - - - - - -//
+
+  constructor() {
+    //Emit a draft everytime the questions control changes and is valid
+    //Add a question : questions control becomes invalid (required) -> no draft emitted
+    //Fill question : questions control becomes valid -> draft emitted
+    this._form.controls.questions.statusChanges
+      .pipe(takeUntilDestroyed())
+      .subscribe((val) => {
+        if (val === 'VALID') {
+          // console.log('questions IF:', val);
+          const survey: SurveyDto = this.toSurveyDto();
+          this.surveyDraft.emit(survey)
+        }
+      })
+  }
+
+  //- - - - - - - - - - - - -//
+
+  private get questions() {
+    return this._form.controls.questions as FormArray;
+  }
+
+  protected addQuestion() {
+    const questionControl = new FormControl<string>('', Validators.required);
+    this.questions.push(questionControl);
+  }
+
+  protected deleteQuestion(QuestionIndex: number) {
+    this.questions.removeAt(QuestionIndex);
+  }
+
+
+  //- - - - - - - - - - - - -//
+
+  setFormValues(survey: SurveyDto) {
+
+    this._form.patchValue({
+      title: survey?.title ?? '',
+      description: survey?.description ?? ''
+    });
+
+    const questions = survey.questions ?? [];
+
+    for (const question of questions) {
+      this.questions.push(new FormControl<Question>(question, Validators.required));
+    }
+    this._form.updateValueAndValidity();
+  }
+
+
+  //- - - - - - - - - - - - -//
+
+
+  submitForm() {
+    if (!this._form.valid)
+      return;
+
+    const survey: SurveyDto = this.toSurveyDto();
+    console.log(survey);
+    this.newSurvey.emit(survey);
+  }
+
+  
+
+  update() {
+    if (!this._form.valid)
+      return;
+
+    const survey: SurveyDto = this.toSurveyDto();
+    console.log(survey);
+    this.updateSurvey.emit(survey);
+  }
+
+  private toSurveyDto(): SurveyDto {
+    const survey: SurveyDto = {
+      ...this._form.value,
+      id: this._surveyToEdit()?.id ?? ''
+    };
+    return survey;
+  }
+
+
+}//Cls

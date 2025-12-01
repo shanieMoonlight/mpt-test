@@ -1,0 +1,12 @@
+
+<div class="cards-container">
+    
+    @for (routeCard of _routeCards; track $index) {
+        
+        <mpt-ui-route-card 
+        [title]="routeCard.title" 
+        [route]="routeCard.route" 
+        [icon]="routeCard.icon" />
+        
+    }
+</div>

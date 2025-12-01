@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  --bg-color: var(--mat-sys-primary);
+
+  --color-txt: var(--mat-sys-primary-100);
+  --color-txt: var(--mat-sys-on-primary);
+
+  --color-bg-start-hover: var(--mat-sys-primary-30);
+  --color-bg-end-hover: var(--mat-sys-primary-50);
+
+  --color-bg-disabled: var(--mat-sys-primary-95);
+  --color-txt-disabled: var(--mat-sys-primary-80);
+
+  --border-radius: var(--mat-sys-corner-extra-small);
+}
+
+.mpt-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--border-radius-btn);
+  
+  font-size: 1rem;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  background: var(--bg-color);
+  color: var(--color-txt);
+}
+
+.mpt-btn:disabled {
+  background: var(--mat-sys-primary-95);
+  background: color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--mat-sys-primary) 20%, transparent);
+  cursor: not-allowed;
+}
+
+.mpt-btn.secondary {
+  --bg-color: var(--mat-sys-secondary);
+  --color-txt: var(--mat-sys-on-secondary);
+  --color-bg-start-hover: var(--mat-sys-secondary-30);
+  --color-bg-end-hover: var(--mat-sys-secondary-50);
+}
+
+
+.mpt-btn.tertiary {
+  --bg-color: var(--mat-sys-tertiary);
+  --color-txt: var(--mat-sys-on-tertiary);
+  --color-bg-start-hover: var(--mat-sys-tertiary-30);
+  --color-bg-end-hover: var(--mat-sys-tertiary-50);
+}
+
+.mpt-btn.error {
+  --bg-color: var(--mat-sys-error);
+  --color-txt: var(--mat-sys-on-error);
+  --color-bg-start-hover: var(--mat-sys-error-30);
+  --color-bg-end-hover: var(--mat-sys-error-50);
+}
+
+
+.mpt-btn:not(:disabled):hover {
+  background: linear-gradient(90deg, var(--color-bg-start-hover) 0%, var(--color-bg-end-hover) 100%);
+}

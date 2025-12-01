@@ -1,0 +1,27 @@
+@if (_successMsg()) {
+  <div class="success-modal-backdrop">
+    <div class="success-modal">
+      <div class="success-modal-header">
+        <mpt-ui-icon>check_circle</mpt-ui-icon>
+        <h3>{{_title()}}</h3>
+          <mpt-ui-icon-button 
+            iconName="close"
+            [theme]="'primary'" 
+            aria-label="Close success modal" 
+            (click)="dismissSuccess()"/>
+      </div>
+      <div class="success-modal-body">
+        <p>{{ _successMsg() }}</p>
+      </div>
+     
+      <mpt-ui-divider [theme]="'primary'" />
+
+      <div class="success-modal-footer">
+        <mpt-ui-text-button theme="primary" 
+          (click)="dismissSuccess()">
+          Dismiss
+        </mpt-ui-text-button>
+      </div>
+    </div>
+  </div>
+}

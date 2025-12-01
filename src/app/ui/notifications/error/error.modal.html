@@ -1,0 +1,25 @@
+@if (_errorMsg()) {
+  <div class="error-modal-backdrop">
+    <div class="error-modal">
+      <div class="error-modal-header">
+        <mpt-ui-icon>error</mpt-ui-icon>
+        <h3>Error</h3>
+          <mpt-ui-icon-button 
+            iconName="close"
+            [theme]="'error'" 
+            aria-label="Close error modal" 
+            (click)="dismissError()"/>
+      </div>
+      <div class="error-modal-body">
+        <p>{{ _errorMsg() }}</p>
+      </div>
+     
+      <mpt-ui-divider [theme]="'error'" />
+     
+      <div class="error-modal-footer">
+        <mpt-ui-text-button [theme]="'error'" 
+          (click)="dismissError()">Dismiss</mpt-ui-text-button>
+      </div>
+    </div>
+  </div>
+}

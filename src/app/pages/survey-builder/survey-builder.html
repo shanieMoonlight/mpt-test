@@ -1,0 +1,17 @@
+<h1>Create survey</h1>
+
+
+<mpt-survey-form  
+  [surveyToEdit]="_draftSurvey()"
+  (newSurvey)="createSurvey($event)"
+  (surveyDraft)="saveSurveyDraft($event)"/>
+
+
+<mpt-notifications-modal
+  [isLoading]="_loading()"
+  [errorMsg]="_errorMsg()"
+  [successMsg]="_successMsg()"/>
+
+
+<!-- {{_draftSurvey() | json}}
+  <button (click)="checkStoredDraft()" >Check Survey Draft</button> -->

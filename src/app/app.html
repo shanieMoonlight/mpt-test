@@ -1,2 +1,58 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<mpt-navbar>
+  <div class="theming">
+    <mpt-dark-mode-toggle />
+    <mpt-theme-picker />
+  </div>
+</mpt-navbar>
+
+
+<!-- <h1>Loading Modal Test</h1> -->
+<!-- <mpt-loader-modal [isLoading]="true"/> -->
+<!-- <mpt-success-modal [successMsg]="'You did it!'"/> -->
+<!-- <mpt-error-modal [errorMsg]="'An error occurred.'"/> -->
+
+<!-- 
+{{_loading()}}
+{{_errorMsg() ? 'Error: ' + _errorMsg() : ''}}
+{{_successMsg() ? 'Success: ' + _successMsg() : ''}}
+{{_data() | json}}
+
+
+<mpt-notifications-modal
+  [isLoading]="_loading()"
+  [errorMsg]="_errorMsg()"
+  [successMsg]="_successMsg()"/> -->
+
+<!-- <mpt-notepad/> -->
+
+<!-- <skills-form></skills-form>
+
+<div class="space">*************************</div>
+
+<skills-group-form></skills-group-form>
+
+<div class="space">*************************</div>
+
+<skills-group-inner-form></skills-group-inner-form> -->
+
+<!-- <mpt-choice-question-form/> -->
+<!-- <mpt-choice-question-cva/> -->
+
+<!-- <mpt-ui-icon>face</mpt-ui-icon>
+<mpt-ui-icon [theme]="'primary'" >face</mpt-ui-icon>
+<mpt-ui-icon [theme]="'secondary'">face</mpt-ui-icon>
+<mpt-ui-icon [theme]="'error'">face</mpt-ui-icon> -->
+
+<!-- 
+<mpt-notifications-modal
+  [isLoading]="false"
+  [errorMsg]="''"
+  [successMsg]="''"/>  -->
+
+
+<!-- <mpt-question-type-menu (selectedItem)="setSelectedItem($event)"/> -->
+
+
+<!-- <mpt-survey-form/> -->
+
+<router-outlet />

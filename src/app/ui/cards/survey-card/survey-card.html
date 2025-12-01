@@ -1,0 +1,14 @@
+<a class="survey-card" 
+    [routerLink]="[surveyDetailRoute()]" 
+    role="button" 
+    aria-label="View {{ survey().title }}"  
+    [attr.data-testid]="'route-card-' + survey().id">
+	<div class="card-inner">
+		<div class="card-title">{{ survey().title }}</div>
+		<div class="card-desc">{{ survey().description }}</div>
+
+		<div class="card-footer">
+			<div class="question-count">{{ (survey().questions || []).length }} Questions</div>
+		</div>
+	</div>
+</a>

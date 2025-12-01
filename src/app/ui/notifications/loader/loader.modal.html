@@ -1,0 +1,10 @@
+  @if (isLoading()) {
+    <div class="loader-modal-backdrop">
+        <div class="loader-card" role="status" aria-live="polite" aria-label="Loading">
+          <div class="spinner" aria-hidden="true"></div>
+          @if (loadingMessage(); as msg) {
+            <div class="loader-message">{{ msg }}</div>
+          }
+        </div>
+    </div>
+  }

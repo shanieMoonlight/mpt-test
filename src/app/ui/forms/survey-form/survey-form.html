@@ -1,0 +1,61 @@
+<form [formGroup]="_form" [sbFormControlFirstError]="_form" class="form">
+
+    <input type="hidden" formControlName="id" />
+
+    <div class="block" tabindex="0" >
+        
+
+        <div class="form-row title" >
+            <label class="label">Title</label>
+            <input type="text" formControlName="title" class="control input" placeholder="Enter the survey title" />
+            <sb-first-error [control]="_form.controls.title" />
+        </div>
+        
+        <div class="form-row">
+            <label class="label">Description</label>
+            <input type="text" formControlName="description" class="control input" placeholder="Enter the survey description" />
+            <sb-first-error [control]="_form.controls.description" />
+        </div>
+        
+        <!-- <div class="form-row">
+            <label class="label">Question</label>
+            <mpt-choice-question-cva  formControlName="question" class="control input"/>
+            <sb-first-error [control]="_form.controls.question" />
+        </div> -->
+
+
+
+        <ng-container formArrayName="questions">
+            @for (answerControl of _form.controls.questions.controls; track $index;let idx = $index) {
+            <div class="form-row inline">
+                <mpt-choice-question-cva 
+                    [questionNumber]="idx + 1" 
+                    [formControlName]="idx" 
+                    class="input"/>
+                <mpt-ui-icon-button (click)="deleteQuestion(idx)" [iconName]="'close'" />
+            </div>
+            }
+        </ng-container>
+
+
+         <div class="footer">
+              <!-- {{this._form.controls.questions.invalid}}={{this._form.controls.questions.length}}-{{this._form.controls.questions.length > 0 && this._form.controls.questions.invalid}} -->
+               <!-- Disable when there is a question that's not completely filled out (invalid) -->
+             <mpt-ui-text-button 
+                type="button" 
+                [disabled]="this._form.controls.questions.length > 0 && this._form.controls.questions.invalid"
+                (click)="addQuestion()">                
+               <mpt-ui-icon>add</mpt-ui-icon> Add Question
+            </mpt-ui-text-button>
+         </div>
+
+    </div> 
+    
+    <div class="form-actions">
+        @if(_isEditMode()){
+            <mpt-ui-button type="button" [disabled]="_form.invalid" (click)="update()">Update</mpt-ui-button>
+        }@else{
+            <mpt-ui-button type="button" [disabled]="_form.invalid" (click)="submitForm()">Save</mpt-ui-button>
+        }
+    </div>
+</form>

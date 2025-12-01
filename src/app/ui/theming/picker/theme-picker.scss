@@ -1,0 +1,56 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out 0s;
+}
+
+
+.selected {
+  background-color: rgba(128, 128, 128, 0.25) !important;
+}
+
+#btn-icon {
+  cursor: pointer;
+  color: inherit;
+
+  mat-icon {
+    color: inherit;
+  }
+}
+
+sb-theme-avatar {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--mat-sys-outline-variant);
+}
+
+mat-divider {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.theme-menu {
+  background-color: var(--mat-sys-surface);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  // background-color: var(--mat-sys-surface-container);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+
+}
+
+.theme-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.avatar-icon {
+  width: 32px;
+  height: 32px;
+}

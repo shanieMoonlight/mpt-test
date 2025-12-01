@@ -1,0 +1,39 @@
+[
+    {
+        "id": "692c5864383f5247a6459358",
+        "title": "Favorite Music Survey",
+        "description": "Find our more about your music preferences!",
+        "questions": [
+            {
+                "questionId": 1,
+                "questionText": "Favourite Genre?",
+                "mandatoryInd": true,
+                "questionType": 1,
+                "options": [
+                    "Jazz",
+                    "Rock",
+                    "Classical"
+                ],
+                "randomizeOptionsInd": true,
+                "cards": null,
+                "programmerNotes": "",
+                "instructions": ""
+            },
+            {
+                "questionId": 2,
+                "questionText": "Favourite Artist?",
+                "mandatoryInd": true,
+                "questionType": 1,
+                "options": [
+                    "Bob Dylan",
+                    "AC/DC",
+                    "Britany Spears"
+                ],
+                "randomizeOptionsInd": false,
+                "cards": null,
+                "programmerNotes": "",
+                "instructions": ""
+            }
+        ]
+    }
+]

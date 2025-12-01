@@ -1,0 +1,18 @@
+
+<div class="cards-container">
+    
+    @for (survey of _data(); track $index) {
+        
+      <mpt-ui-survey-card
+        [survey]="survey" />
+        
+    }
+</div>
+
+
+
+
+<mpt-notifications-modal
+  [isLoading]="_loading()"
+  [errorMsg]="_errorMsg()"
+  [successMsg]="_successMsg()"/>

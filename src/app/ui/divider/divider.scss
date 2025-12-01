@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: 1px;
+  background-color: var(--mat-sys-outline-variant);
+  margin: 0 16px;
+}
+
+
+:host(.primary) {
+  background-color: rgba(var(--mat-sys-primary-rgb), 0.25);
+}
+
+:host(.secondary) {
+  background-color: rgba(var(--mat-sys-secondary-rgb), 0.25);
+}
+
+:host(.tertiary) {
+  background-color: rgba(var(--mat-sys-tertiary-rgb), 0.25);
+}
+
+:host(.error) {
+  background-color: rgba(var(--mat-sys-error-rgb), 0.25);
+}

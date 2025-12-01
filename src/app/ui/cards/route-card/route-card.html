@@ -1,0 +1,19 @@
+<a class="route-card" 
+    [routerLink]="route()" 
+    role="button" 
+    [attr.aria-label]="title()" 
+    [attr.data-testid]="'route-card-' + title()">
+
+	<div class="card-inner">
+		<div class="card-title">{{ title() }}</div>
+
+		<div class="card-icon" aria-hidden="true">
+			<mpt-ui-icon 
+                [theme]="theme()"
+                [iconSizePx]="72">
+                {{ icon() }}
+            </mpt-ui-icon>
+		</div>
+	</div>
+
+</a>

@@ -1,0 +1,19 @@
+<div cdkMenuBar>
+  <mpt-ui-icon-button  [iconName]="'palette'"
+    [cdkMenuTriggerFor]="menu"/>
+</div>
+
+ <ng-template #menu>
+  <div class="theme-menu" cdkMenu>
+    @for (option of _allOptions(); track $index) {
+      <div
+        cdkMenuItem
+        class="theme-menu-item"
+        [class.selected]="option.value === _selectedOption()?.value"
+        (click)="_changeThemeClick$.next(option)">
+        <sb-theme-avatar [theme]="option"/>
+        <span>{{ option.label }}</span>
+      </div>
+    }    
+  </div>
+</ng-template>

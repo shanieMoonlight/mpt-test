@@ -19,6 +19,11 @@
     "@angular/platform-server": "~20.3.0",
     "@angular/router": "~20.3.0",
     "@angular/ssr": "~20.3.0",
+    "@spider-baby/material-theming": "^2.0.2",
+    "@spider-baby/mini-state": "^2.0.0",
+    "@spider-baby/ssr-storage": "^2.0.1",
+    "@spider-baby/ui-toast": "^1.0.0",
+    "@spider-baby/utils-forms": "^2.0.1",
     "express": "^4.21.2",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"

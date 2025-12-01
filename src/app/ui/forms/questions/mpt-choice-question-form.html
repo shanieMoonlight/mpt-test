@@ -1,0 +1,46 @@
+<form [formGroup]="_form" [sbFormControlFirstError]="_form" class="form">
+
+    <div class="block" tabindex="0" >
+        <div class="form-row inline">
+            <div class="q">Q{{_form.controls.questionId.value}}</div>
+            <mpt-question-type-menu formControlName="questionType" [items]="_questionTypeMenuItems" />
+            <sb-first-error [control]="_form.controls.questionType" />
+        </div>
+
+        <div class="form-row">
+            <label class="label">Question</label>
+            <input type="text" formControlName="questionText" class="control input" placeholder="Enter the question text" />
+            <sb-first-error [control]="_form.controls.questionText" />
+        </div>
+        
+
+        <ng-container formArrayName="options">
+            <!-- Don't use getter -->
+            @for (answerControl of _form.controls.options.controls; track $index;let idx = $index) {
+            <div class="form-row inline">
+                <span>- </span><input class="control input option" [formControlName]="idx" placeholder="Question {{ idx + 1 }}" />
+                <mpt-ui-icon-button (click)="deleteAnswerOption(idx)" [iconName]="'close'" />
+            </div>
+            }
+        </ng-container>
+
+
+        <div class="footer">
+            <mpt-ui-text-button (click)="addAnswerOption()">Add Option</mpt-ui-text-button>
+            <div class="checkboxes">
+
+                <div class="form-row inline">
+                    <label class="label">Make Required</label>
+                    <input type="checkbox" formControlName="mandatoryInd" class="control checkbox" />
+                    <sb-first-error [control]="_form.controls.mandatoryInd" />
+                </div>
+
+                <div class="form-row inline">
+                    <label class="label">Randomize Options</label>
+                    <input type="checkbox" formControlName="randomizeOptions" class="control checkbox" />
+                    <sb-first-error [control]="_form.controls.randomizeOptions" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

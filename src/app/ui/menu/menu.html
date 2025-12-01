@@ -1,0 +1,47 @@
+
+<div cdkMenuBar>
+    <mpt-menu-selector-button 
+      [item]="_selectedItem()"
+      [cdkMenuTriggerFor]="menu"/>
+</div>
+
+ <ng-template #menu >
+  <!-- cdkMenu -->
+  <nav class="mpt-menu" cdkMenu [class]="theme()">
+    @for (item of items(); track $index) {
+    <button class="menu-item" 
+      [class.selected]="item.label === _selectedItem()?.label"
+      (click)="updateSelectedItem(item)"
+      cdkMenuItem>
+      <i class="material-icons">{{item.icon}}</i>
+      <span class="label">{{item.label}}</span>
+    </button>
+    }
+  </nav>
+</ng-template>
+
+
+
+
+  <!-- <nav class="mpt-menu" cdkMenu [class]="theme()">
+    @for (item of items(); track $index) {
+    <button class="menu-item" 
+      [class.selected]="item.label === _selectedItem()?.label"
+      (click)="updateSelectedItem(item)"
+      cdkMenuItem>
+      <i class="material-icons">{{item.icon}}</i>
+      <span class="label">{{item.label}}</span>
+    </button>
+    }
+  </nav> -->
+<!-- 
+<mpt-menu-selector-button [item]="items()[2]"/>
+
+<nav class="mpt-menu">
+  @for (item of items(); track $index) {
+  <button class="menu-item" type="button">
+    <i class="material-icons">{{item.icon}}</i>
+    <span class="label">{{item.label}}</span>
+  </button>
+  }
+</nav> -->

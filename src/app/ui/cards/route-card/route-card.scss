@@ -1,0 +1,85 @@
+:host {
+    display: inline-block;
+
+    --border-color-hover: rgba(var(--mat-sys-primary-rgb), 0.25);
+}
+
+.route-card {
+    display: inline-flex;
+    width: 200px;
+    height: 200px;
+    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
+    color: var(--mat-sys-on-surface);
+    background: var(--mat-sys-surface);
+    border: 1px solid rgba(16, 24, 40, 0.06);
+    border: 1px solid var(--mat-sys-outline-variant);
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.route-card:hover,
+.route-card:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(16, 24, 40, 0.08);
+    border-color: rgba(59, 130, 246, 0.12);
+    border-color: var(--border-color-hover);
+}
+
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 18px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    // background-color: red;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    // color: #111827;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.card-icon {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+// .card-icon mpt-ui-icon i.material-icons {
+// 	font-size: 72px;
+// 	line-height: 1;
+// 	color: #374151;
+// }
+
+.route-card:active {
+    transform: translateY(-2px) scale(0.998);
+}
+
+
+
+:host(.primary) {
+    --border-color-hover: rgba(var(--mat-sys-primary-rgb), 0.25);
+}
+
+:host(.secondary) {
+    --border-color-hover: rgba(var(--mat-sys-secondary-rgb), 0.25);
+}
+
+:host(.tertiary) {
+    --border-color-hover: rgba(var(--mat-sys-tertiary-rgb), 0.25);
+}
+
+:host(.error) {
+    --border-color-hover: rgba(var(--mat-sys-error-rgb), 0.25);
+}

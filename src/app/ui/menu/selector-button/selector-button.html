@@ -1,0 +1,15 @@
+<button
+  class="selector-btn"
+  type="button"
+  [class.selected]="item()"
+  [attr.data-testid]="item()?.label">
+
+  <span class="icon-left material-icons" aria-hidden="true">
+    {{ item()?.icon }}
+  </span>
+
+  <span class="label">{{ item()?.label ?? nonthingSelectedText() }}</span>    
+  <span class="caret material-icons" aria-hidden="true">
+    keyboard_arrow_down
+  </span>
+</button>
